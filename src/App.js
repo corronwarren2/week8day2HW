@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import Navbar from './components/Navbar'
+import { Switch, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import About from './views/About';
 import Home from './views/Home';
 
 export default class App extends Component {
@@ -33,7 +35,15 @@ componentDidMount(){
       <div>
         <Navbar myName={myName} />
         <div class="container">
-          <Home myName={myName} updateName={this.updateName}/>
+          <Switch>
+            <Route  exact path='/'>
+              <Home myName={myName} updateName={this.updateName}/>
+            </Route>
+            <Route exact path='/about'>
+              <About />
+            </Route>
+          </Switch>
+          <h1>Single Page Test</h1>
         </div>
       </div>
     )
