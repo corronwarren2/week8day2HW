@@ -9,7 +9,8 @@ export default class App extends Component {
     super(props);
     console.log('Component Constructing...')
     this.state = {
-      myName: 'Corron'
+      myName: 'Corron',
+      racers: []
     }
   }
 
@@ -22,10 +23,12 @@ export default class App extends Component {
 
 componentDidMount(){
   console.log('Component Did Mount...')
-  this.setState({
-    myName: "Micheal Jordan"
-  }
-  )
+  fetch('https://ergast.com/api/f1/2021/1/driverStandings.json')
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+  })
+  
 }
 
   render() {
